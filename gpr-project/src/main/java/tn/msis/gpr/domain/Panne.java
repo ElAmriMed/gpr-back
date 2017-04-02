@@ -1,47 +1,51 @@
 package tn.msis.gpr.domain;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
-import org.joda.time.LocalDate;
 @Entity
-@Table(name="panne")
-public class Panne implements Serializable{
-	@Id 
-	@GeneratedValue(strategy= GenerationType.IDENTITY) 
-	@Column(name="id_panne")
+public class Panne implements Serializable {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
+	@Column(name = "id")
 	private Integer idPanne;
-	@Column(name="reference_panne")
+
+	@Column(name = "reference_panne")
 	private String referencePanne;
-	@Column(name="date_panne")
-	private LocalDate datePanne;
-	
-	public Panne(){
-		
-	}
+
+	@Column(name = "date_panne")
+	private LocalDateTime datePanne;
+
 	public Integer getIdPanne() {
 		return idPanne;
 	}
+
 	public void setIdPanne(Integer idPanne) {
 		this.idPanne = idPanne;
 	}
+
 	public String getReferencePanne() {
 		return referencePanne;
 	}
+
 	public void setReferencePanne(String referencePanne) {
 		this.referencePanne = referencePanne;
 	}
-	public LocalDate getDatePanne() {
+
+	public LocalDateTime getDatePanne() {
 		return datePanne;
 	}
-	public void setDatePanne(LocalDate datePanne) {
+
+	public void setDatePanne(LocalDateTime datePanne) {
 		this.datePanne = datePanne;
 	}
-	
+
 }

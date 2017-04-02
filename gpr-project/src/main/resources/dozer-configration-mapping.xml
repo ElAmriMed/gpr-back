@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://dozer.sourceforge.net
+          http://dozer.sourceforge.net/schema/beanmapping.xsd">
+
+    <configuration>
+        <custom-converters>
+<!--             <converter -->
+<!--                     type="tn.msis.gpr.converter.LocalDateTimeConverter"> -->
+<!--                 <class-a>java.lang.String</class-a> -->
+<!--                 <class-b>java.time.LocalDateTime</class-b> -->
+<!--             </converter> -->
+            
+             <converter
+                    type="tn.msis.gpr.converter.EnginConverter">
+                <class-a>tn.msis.gpr.entities.Engin</class-a>
+                <class-b>tn.msis.gpr.domain.Engin</class-b>
+            </converter>
+        </custom-converters>
+    </configuration>
+
+</mappings>

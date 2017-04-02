@@ -9,29 +9,23 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 import tn.msis.gpr.enums.EtatEngin;
 import tn.msis.gpr.enums.TypeEngin;
 
 @Entity
-@Table(name = "engin")
 public class Engin implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 4748497345082994988L;
 
 	@Id
-	@Column(name = "id", unique = true, nullable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@Enumerated(EnumType.STRING)
 	private TypeEngin type;
 
-	@Column(name = "matricule", unique = true, nullable = false)
+	@Column(unique = true, nullable = false)
 	private String matricule;
 
 	private String marque;
@@ -42,10 +36,10 @@ public class Engin implements Serializable {
 	private EtatEngin etat;
 
 	public Engin() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public Engin(TypeEngin type, String matricule, String marque, String modele, EtatEngin etat) {
-		super();
 		this.type = type;
 		this.matricule = matricule;
 		this.marque = marque;

@@ -1,15 +1,16 @@
 package tn.msis.gpr.controller;
 
-import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
-import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 import java.util.Arrays;
 import java.util.List;
 
+import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,43 +27,48 @@ public class EnginController {
 	@Autowired
 	private EnginRepository enginRepository;
 
+	@Autowired
+	private DozerBeanMapper dozerBeanMapper;
+
 	@CrossOrigin
-	@RequestMapping(value = "/findAll", method = GET)
+	@GetMapping("/findAll")
 	public List<Engin> findAll() {
 		return enginRepository.findAll();
 	}
 
 	@CrossOrigin
-	@RequestMapping(value = "/find/matricule/{matricule}", method = GET)
+	@GetMapping("/find/matricule/{matricule}")
 	public Engin findByMatricule(@PathVariable("matricule") String matricule) {
 		return enginRepository.findByMatricule(matricule);
 	}
 
 	@CrossOrigin
-	@RequestMapping(value = "/findByType/{typeEngin}", method = GET)
+	@GetMapping("/findByType/{typeEngin}")
 	public List<Engin> findByType(@PathVariable("typeEngin") String typeEngin) {
 
 		return enginRepository.findByType(TypeEngin.valueOf(typeEngin));
 	}
 
 	@CrossOrigin
-	@RequestMapping(value = "/find/id/{id}", method = GET)
+	@GetMapping("/find/id/{id}")
 	public Engin findOne(@PathVariable("id") Long id) {
 		return enginRepository.findOne(id);
 	}
 
 	@CrossOrigin
-	@RequestMapping(value = "/add", method = POST)
-	public void add(@RequestBody Engin engin) {
+	@PostMapping("/add")
+	public void add(@RequestBody tn.msis.gpr.entities.Engin engin) {
 
-		enginRepository.save(engin);
+		Engin domain = dozerBeanMapper.map(engin, Engin.class);
+
+		enginRepository.save(domain);
 	}
 
-	@CrossOrigin
-	@RequestMapping(value = "/delete/id/{id}", method = DELETE)
-	public void supprimerEngin(@PathVariable("id") Long id) {
-		enginRepository.delete(id);
-	}
+	// @CrossOrigin
+	// @RequestMapping(value = "/delete/id/{id}", method = DELETE)
+	// public void supprimerEngin(@PathVariable("id") Long id) {
+	// enginRepository.delete(id);
+	// }
 
 	@CrossOrigin
 	@RequestMapping(value = "/getAllTypes", method = GET)
