@@ -1,6 +1,6 @@
 package tn.msis.gpr.domain;
 
-import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import javax.persistence.Embedded;
@@ -10,7 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Panne implements Serializable {
+public class Devis {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,17 +22,8 @@ public class Panne implements Serializable {
 
 	private LocalDateTime dateCreation;
 
-	private String cause;
-
-	private String description;
-
 	@Embedded
-	private Reparation reparation;
+	private Fournisseur fournisseur;
 
-	@Embedded
-	private Facture facture;
-
-	public Panne() {
-	}
-
+	private BigDecimal cout;
 }

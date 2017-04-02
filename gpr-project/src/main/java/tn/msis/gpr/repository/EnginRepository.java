@@ -24,22 +24,37 @@ public interface EnginRepository extends JpaRepository<Engin, Long> {
 
 	public List<Engin> findByEtat(EtatEngin etat);
 
-	public List<Engin> findByMarque(String marque);
+	public List<Engin> findByMarqueIgnoreCase(String marque);
 
 	public List<Engin> findByModele(String modele);
 
 	// *********** MIXED ****************
 
-	public List<Engin> findByTypeAndEtat(TypeEngin type, EtatEngin etat);
+	public List<Engin> findByTypeAndEtatAllIgnoreCase(TypeEngin type, EtatEngin etat);
 
-	public List<Engin> findByTypeAndMarque(TypeEngin type, String marque);
+	public List<Engin> findByTypeAndMarqueAllIgnoreCase(TypeEngin type, String marque);
 
-	public List<Engin> findByTypeAndModele(TypeEngin type, String modele);
+	public List<Engin> findByTypeAndModeleAllIgnoreCase(TypeEngin type, String modele);
 
-	public List<Engin> findByEtatAndMarque(EtatEngin etat, String marque);
+	public List<Engin> findByEtatAndMarqueAllIgnoreCase(EtatEngin etat, String marque);
 
-	public List<Engin> findByEtatAndModele(EtatEngin etat, String modele);
+	public List<Engin> findByEtatAndModeleAllIgnoreCase(EtatEngin etat, String modele);
 
-	public List<Engin> findByMarqueAndModele(String marque, String modele);
+	public List<Engin> findByMarqueAndModeleAllIgnoreCase(String marque, String modele);
+
+	public List<Engin> findByTypeAndEtatAndMarqueAllIgnoreCase(TypeEngin type, EtatEngin etat, String marque);
+
+	public List<Engin> findByTypeAndEtatAndModeleAllIgnoreCase(TypeEngin type, EtatEngin etat, String modele);
+
+	public List<Engin> findByTypeAndMarqueAndModeleAllIgnoreCase(TypeEngin type, String marque, String modele);
+
+	public List<Engin> findByEtatAndMarqueAndModeleAllIgnoreCase(EtatEngin etat, String marque, String modele);
+
+	public List<Engin> findByMarqueAndTypeAndModeleAndEtatAllIgnoreCase(String marque, TypeEngin type, String modele,
+			EtatEngin etat);
+
+	// *********** PROJECT RELATED ****************
+
+	public List<Engin> findByProjet(String referenceProjet);
 
 }

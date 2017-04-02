@@ -13,17 +13,17 @@ public class EnginConverter extends DozerConverter<Engin, tn.msis.gpr.entities.E
 	}
 
 	@Override
-	public Engin convertFrom(tn.msis.gpr.entities.Engin entity, Engin domain) {
+	public Engin convertFrom(tn.msis.gpr.entities.Engin source, Engin destination) {
 
-		return new Engin(TypeEngin.valueOf(entity.getType()), entity.getmatricule(), entity.getMarque(),
-				entity.getmodele(), EtatEngin.valueOf(entity.getEtat()));
+		return new Engin(TypeEngin.valueOf(source.getType()), source.getmatricule(), source.getMarque(),
+				source.getmodele(), EtatEngin.valueOf(source.getEtat()));
 	}
 
 	@Override
 	public tn.msis.gpr.entities.Engin convertTo(Engin domain, tn.msis.gpr.entities.Engin entity) {
 
-		return new tn.msis.gpr.entities.Engin(domain.getType().name(), domain.getmatricule(), domain.getMarque(),
-				domain.getmodele(), domain.getEtat().name());
+		return new tn.msis.gpr.entities.Engin(domain.getType().name(), domain.getMatricule(), domain.getMarque(),
+				domain.getModele(), domain.getEtat().name());
 	}
 
 }

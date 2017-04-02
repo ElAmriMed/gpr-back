@@ -35,6 +35,10 @@ public class Engin implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private EtatEngin etat;
 
+	private String carburant;
+
+	private String projet;
+
 	public Engin() {
 		// TODO Auto-generated constructor stub
 	}
@@ -48,48 +52,90 @@ public class Engin implements Serializable {
 	}
 
 	/**
+	 * @return the serialversionuid
+	 */
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	/**
 	 * @return the id
 	 */
 	public Long getId() {
 		return id;
 	}
 
+	/**
+	 * @return the type
+	 */
 	public TypeEngin getType() {
 		return type;
 	}
 
-	public void setType(TypeEngin type) {
-		this.type = type;
-	}
-
-	public String getmatricule() {
+	/**
+	 * @return the matricule
+	 */
+	public String getMatricule() {
 		return matricule;
 	}
 
-	public void setmatricule(String matricule) {
-		this.matricule = matricule;
-	}
-
+	/**
+	 * @return the marque
+	 */
 	public String getMarque() {
 		return marque;
 	}
 
-	public void setMarque(String marque) {
-		this.marque = marque;
-	}
-
-	public String getmodele() {
+	/**
+	 * @return the modele
+	 */
+	public String getModele() {
 		return modele;
 	}
 
-	public void setmodele(String modele) {
-		this.modele = modele;
-	}
-
+	/**
+	 * @return the etat
+	 */
 	public EtatEngin getEtat() {
 		return etat;
 	}
 
+	/**
+	 * @param type
+	 *            the type to set
+	 */
+	public void setType(TypeEngin type) {
+		this.type = type;
+	}
+
+	/**
+	 * @param matricule
+	 *            the matricule to set
+	 */
+	public void setMatricule(String matricule) {
+		this.matricule = matricule;
+	}
+
+	/**
+	 * @param marque
+	 *            the marque to set
+	 */
+	public void setMarque(String marque) {
+		this.marque = marque;
+	}
+
+	/**
+	 * @param modele
+	 *            the modele to set
+	 */
+	public void setModele(String modele) {
+		this.modele = modele;
+	}
+
+	/**
+	 * @param etat
+	 *            the etat to set
+	 */
 	public void setEtat(EtatEngin etat) {
 		this.etat = etat;
 	}

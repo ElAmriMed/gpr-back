@@ -1,6 +1,5 @@
 package tn.msis.gpr.domain;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import javax.persistence.Embedded;
@@ -10,7 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Panne implements Serializable {
+public class Maintenance {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,19 +19,11 @@ public class Panne implements Serializable {
 
 	private String matricule;
 
-	private LocalDateTime dateCreation;
+	private LocalDateTime dateDebut;
 
-	private String cause;
-
-	private String description;
-
-	@Embedded
-	private Reparation reparation;
+	private LocalDateTime dateFin;
 
 	@Embedded
 	private Facture facture;
-
-	public Panne() {
-	}
 
 }
