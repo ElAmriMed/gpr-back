@@ -1,6 +1,0 @@
-tn\msis\gpr\GprProjectApplication.class
-tn\msis\gpr\controller\EnginController.class
-tn\msis\gpr\repository\EnginRepository.class
-tn\msis\gpr\domain\Engin.class
-tn\msis\gpr\repository\PanneRepository.class
-tn\msis\gpr\domain\Panne.class
