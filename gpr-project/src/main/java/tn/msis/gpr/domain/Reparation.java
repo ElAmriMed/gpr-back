@@ -9,10 +9,29 @@ import javax.persistence.Embedded;
 @Embeddable
 public class Reparation implements Serializable {
 
-	private LocalDateTime dateDebut;
+	private LocalDateTime dateDebutReparation;
 
-	private LocalDateTime dateFin;
+	private LocalDateTime dateFinReparation;
+	
+	
+	
+	public Reparation() { }
 
-	@Embedded
-	private Facture facture;
+	public LocalDateTime getDateDebutReparation() {
+		return dateDebutReparation;
+	}
+
+	public void setDateDebutReparation(LocalDateTime dateDebut) {
+		this.dateDebutReparation = dateDebut;
+	}
+
+	public LocalDateTime getDateFinReparation() {
+		return dateFinReparation;
+	}
+
+	public void setDateFinReparation(LocalDateTime dateFin) {
+		this.dateFinReparation = dateFin;
+	}
+	
+	
 }

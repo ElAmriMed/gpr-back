@@ -39,9 +39,7 @@ public class Engin implements Serializable {
 
 	private String projet;
 
-	public Engin() {
-		// TODO Auto-generated constructor stub
-	}
+	public Engin() { }
 
 	public Engin(TypeEngin type, String matricule, String marque, String modele, EtatEngin etat) {
 		this.type = type;

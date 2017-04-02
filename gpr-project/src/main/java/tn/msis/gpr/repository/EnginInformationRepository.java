@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import tn.msis.gpr.domain.Engin;
@@ -18,6 +19,6 @@ public interface EnginInformationRepository extends JpaRepository<Engin, Long> {
 	public List<String> getAllModeles();
 
 	@Query("select modele from EnginInformation where marque = :marque")
-	public List<String> findAllModelesByMarque(String marque);
+	public List<String> findAllModelesByMarque(@Param("marque") String marque);
 
 }
