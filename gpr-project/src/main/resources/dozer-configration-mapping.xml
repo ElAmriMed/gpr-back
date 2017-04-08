@@ -5,17 +5,19 @@
 
     <configuration>
         <custom-converters>
-<!--             <converter -->
-<!--                     type="tn.msis.gpr.converter.LocalDateTimeConverter"> -->
-<!--                 <class-a>java.lang.String</class-a> -->
-<!--                 <class-b>java.time.LocalDateTime</class-b> -->
-<!--             </converter> -->
             
              <converter
                     type="tn.msis.gpr.converter.EnginConverter">
                 <class-a>tn.msis.gpr.entities.Engin</class-a>
                 <class-b>tn.msis.gpr.domain.Engin</class-b>
             </converter>
+            
+            <converter
+                    type="tn.msis.gpr.converter.PanneConverter">
+                <class-a>tn.msis.gpr.entities.Panne</class-a>
+                <class-b>tn.msis.gpr.domain.Panne</class-b>
+            </converter>
+            
         </custom-converters>
     </configuration>
 

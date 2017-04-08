@@ -1,15 +1,21 @@
-package tn.msis.gpr.domain;
+package tn.msis.gpr.entities;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
-import javax.persistence.Embeddable;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
-@Embeddable
-public class Reparation implements Serializable {
+import tn.msis.gpr.deserializer.MyLocalDateTimeDeserializer;
+import tn.msis.gpr.deserializer.MyLocalDateTimeSerializer;
 
+public class Reparation {
+
+	@JsonDeserialize(using = MyLocalDateTimeDeserializer.class)
+	@JsonSerialize(using = MyLocalDateTimeSerializer.class)
 	private LocalDateTime dateDebutReparation;
 
+	@JsonDeserialize(using = MyLocalDateTimeDeserializer.class)
+	@JsonSerialize(using = MyLocalDateTimeSerializer.class)
 	private LocalDateTime dateFinReparation;
 
 	public Reparation() {
@@ -36,5 +42,4 @@ public class Reparation implements Serializable {
 	public void setDateFinReparation(LocalDateTime dateFin) {
 		this.dateFinReparation = dateFin;
 	}
-
 }

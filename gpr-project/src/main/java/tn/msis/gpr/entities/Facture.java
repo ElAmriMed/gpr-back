@@ -1,18 +1,22 @@
-package tn.msis.gpr.domain;
+package tn.msis.gpr.entities;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
-@Embeddable
-public class Facture implements Serializable {
+import tn.msis.gpr.deserializer.MyLocalDateTimeDeserializer;
+import tn.msis.gpr.deserializer.MyLocalDateTimeSerializer;
 
-	@Column(name = "facture")
+public class Facture {
+
+	@JsonProperty("facture")
 	private String referenceFacture;
 
+	@JsonDeserialize(using = MyLocalDateTimeDeserializer.class)
+	@JsonSerialize(using = MyLocalDateTimeSerializer.class)
 	private LocalDateTime dateCreationFacture;
 
 	private BigDecimal cout;
@@ -49,5 +53,4 @@ public class Facture implements Serializable {
 	public void setCout(BigDecimal cout) {
 		this.cout = cout;
 	}
-
 }

@@ -1,13 +1,6 @@
-package tn.msis.gpr.domain;
+package tn.msis.gpr.entities;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
-
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -15,12 +8,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import tn.msis.gpr.deserializer.MyLocalDateTimeDeserializer;
 import tn.msis.gpr.deserializer.MyLocalDateTimeSerializer;
 
-@Entity
-public class Panne implements Serializable {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+public class Panne {
 
 	private String reference;
 
@@ -34,10 +22,8 @@ public class Panne implements Serializable {
 
 	private String description;
 
-	@Embedded
 	private Reparation reparation;
 
-	@Embedded
 	private Facture facture;
 
 	public Panne() {
@@ -109,10 +95,6 @@ public class Panne implements Serializable {
 
 	public void setFacture(Facture facture) {
 		this.facture = facture;
-	}
-
-	public Long getId() {
-		return id;
 	}
 
 }
