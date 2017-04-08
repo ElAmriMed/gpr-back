@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import tn.msis.gpr.domain.Panne;
 import tn.msis.gpr.repository.PanneRepository;
 
+@CrossOrigin(origins = "http://192.168.1.8:4200")
 @RestController
 @RequestMapping(value = "/panne")
 public class PanneController {

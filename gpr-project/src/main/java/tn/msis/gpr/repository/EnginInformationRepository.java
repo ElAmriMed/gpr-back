@@ -19,6 +19,6 @@ public interface EnginInformationRepository extends JpaRepository<Engin, Long> {
 	public List<String> getAllModeles();
 
 	@Query("select modele from EnginInformation where marque = :marque")
-	public List<String> findAllModelesByMarque(@Param("marque") String marque);
+	public List<String> getAllModelesByMarque(@Param("marque") String marque);
 
 }

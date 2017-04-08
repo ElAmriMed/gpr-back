@@ -21,6 +21,7 @@ import tn.msis.gpr.enums.EtatEngin;
 import tn.msis.gpr.enums.TypeEngin;
 import tn.msis.gpr.repository.EnginRepository;
 
+@CrossOrigin(origins = "http://192.168.1.8:4200")
 @RequestMapping(value = "/engin")
 @RestController
 public class EnginController {
@@ -31,7 +32,6 @@ public class EnginController {
 	@Autowired
 	private DozerBeanMapper dozerBeanMapper;
 
-	@CrossOrigin
 	@RequestMapping(value = "/findAll", method = GET)
 	public List<Engin> findAll() {
 		return enginRepository.findAll();
