@@ -37,11 +37,6 @@ public class EnginController {
 		return enginRepository.findAll();
 	}
 
-	@RequestMapping(value = "/find/id/{id}", method = GET)
-	public Engin findOne(@PathVariable("id") Long id) {
-		return enginRepository.findOne(id);
-	}
-
 	@RequestMapping(value = "/find/matricule/{matricule}", method = GET)
 	public Engin findByMatricule(@PathVariable("matricule") String matricule) {
 		return enginRepository.findByMatricule(matricule);

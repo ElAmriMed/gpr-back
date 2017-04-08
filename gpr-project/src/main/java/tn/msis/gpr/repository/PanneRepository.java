@@ -16,4 +16,5 @@ public interface PanneRepository extends JpaRepository<Panne, Long> {
 
 	// method de test
 	public List<Panne> findByFacture_coutGreaterThan(BigDecimal cout);
+
 }
