@@ -11,6 +11,7 @@ import java.util.List;
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -158,4 +159,13 @@ public class EnginController {
 		return enginRepository.findByMarqueAndTypeAndModeleAndEtatAllIgnoreCase(marque, TypeEngin.valueOf(type), modele,
 				EtatEngin.valueOf(etat));
 	}
+
+	@GetMapping("/find/matricule/{matricule}/etat/{etat}")
+	public Engin findByMatriculeAndEtat(@PathVariable("matricule") String matricule,
+			@PathVariable("etat") String etat) {
+
+		return enginRepository.findByMatriculeAndEtat(matricule, EtatEngin.valueOf(etat));
+
+	}
+
 }

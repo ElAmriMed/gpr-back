@@ -2,18 +2,24 @@ package tn.msis.gpr.domain;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import tn.msis.gpr.deserializer.MyLocalDateTimeDeserializer;
 import tn.msis.gpr.deserializer.MyLocalDateTimeSerializer;
+import tn.msis.gpr.enums.EtatPanne;
 
 @Entity
 public class Panne implements Serializable {
@@ -24,6 +30,7 @@ public class Panne implements Serializable {
 
 	private String reference;
 
+	@Column(unique = true)
 	private String matricule;
 
 	@JsonDeserialize(using = MyLocalDateTimeDeserializer.class)
@@ -39,6 +46,27 @@ public class Panne implements Serializable {
 
 	@Embedded
 	private Facture facture;
+
+	@Transient
+	private List<String> referencesDevis = null;
+
+	@Enumerated(EnumType.STRING)
+	private EtatPanne etat = EtatPanne.ATTENTE_DEVIS;
+
+	/**
+	 * @return the referencesDevis
+	 */
+	public List<String> getReferencesDevis() {
+		return referencesDevis;
+	}
+
+	/**
+	 * @param referencesDevis
+	 *            the referencesDevis to set
+	 */
+	public void setReferencesDevis(List<String> referencesDevis) {
+		this.referencesDevis = referencesDevis;
+	}
 
 	public Panne() {
 	}
@@ -113,6 +141,21 @@ public class Panne implements Serializable {
 
 	public Long getId() {
 		return id;
+	}
+
+	/**
+	 * @return the etat
+	 */
+	public EtatPanne getEtat() {
+		return etat;
+	}
+
+	/**
+	 * @param etat
+	 *            the etat to set
+	 */
+	public void setEtat(EtatPanne etat) {
+		this.etat = etat;
 	}
 
 }

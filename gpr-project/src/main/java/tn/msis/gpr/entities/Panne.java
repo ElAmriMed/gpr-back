@@ -1,6 +1,7 @@
 package tn.msis.gpr.entities;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -26,12 +27,16 @@ public class Panne {
 
 	private Facture facture;
 
+	private List<String> referencesDevis;
+
+	private String etat;
+
 	public Panne() {
 	}
 
 	public Panne(String reference, String matricule, LocalDateTime dateOccurence, String cause, String description,
-			Reparation reparation, Facture facture) {
-
+			Reparation reparation, Facture facture, List<String> referencesDevis) {
+		super();
 		this.reference = reference;
 		this.matricule = matricule;
 		this.dateOccurence = dateOccurence;
@@ -39,6 +44,7 @@ public class Panne {
 		this.description = description;
 		this.reparation = reparation;
 		this.facture = facture;
+		this.referencesDevis = referencesDevis;
 	}
 
 	public String getReference() {
@@ -95,6 +101,35 @@ public class Panne {
 
 	public void setFacture(Facture facture) {
 		this.facture = facture;
+	}
+
+	/**
+	 * @return the referencesDevis
+	 */
+	public List<String> getReferencesDevis() {
+		return referencesDevis;
+	}
+
+	/**
+	 * @param refDevisList
+	 *            the referencesDevis to set
+	 */
+	public void setReferencesDevis(List<String> refDevisList) {
+		this.referencesDevis = refDevisList;
+	}
+
+	/**
+	 * @return the etat
+	 */
+	public String getEtat() {
+		return etat;
+	}
+
+	/**
+	 * @param etat the etat to set
+	 */
+	public void setEtat(String etat) {
+		this.etat = etat;
 	}
 
 }

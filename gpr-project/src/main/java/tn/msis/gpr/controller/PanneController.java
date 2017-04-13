@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import tn.msis.gpr.entities.Panne;
+import tn.msis.gpr.enums.EtatPanne;
 import tn.msis.gpr.repository.PanneRepository;
 
 @CrossOrigin(origins = "http://192.168.1.8:4200")
@@ -68,4 +69,18 @@ public class PanneController {
 
 		panneRepository.save(domain);
 	}
+
+	@GetMapping("/find/etat/{etat}")
+	public List<Panne> findByEtatPanne(@PathVariable("etat") String etat) {
+
+		List<Panne> destinations = new ArrayList<>();
+		List<tn.msis.gpr.domain.Panne> sources = panneRepository.findByEtat(EtatPanne.valueOf(etat));
+
+		for (tn.msis.gpr.domain.Panne source : sources) {
+			destinations.add(dozerBeanMapper.map(source, Panne.class));
+		}
+
+		return destinations;
+	}
+
 }

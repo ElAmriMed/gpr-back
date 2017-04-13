@@ -22,6 +22,8 @@ public interface EnginRepository extends JpaRepository<Engin, Long> {
 
 	public List<Engin> findByType(TypeEngin type);
 
+	public Engin findByMatriculeAndEtat(String matricule, EtatEngin etat);
+
 	public List<Engin> findByEtat(EtatEngin etat);
 
 	public List<Engin> findByMarqueIgnoreCase(String marque);

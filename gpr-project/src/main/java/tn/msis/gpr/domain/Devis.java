@@ -4,15 +4,25 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
-public class Devis implements Serializable{
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+import tn.msis.gpr.deserializer.MyLocalDateTimeDeserializer;
+import tn.msis.gpr.deserializer.MyLocalDateTimeSerializer;
+
+@JsonInclude(value = Include.NON_NULL)
+@Entity
+public class Devis implements Serializable {
+
+	@JsonIgnore
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -21,14 +31,20 @@ public class Devis implements Serializable{
 
 	private String matricule;
 
+	@JsonDeserialize(using = MyLocalDateTimeDeserializer.class)
+	@JsonSerialize(using = MyLocalDateTimeSerializer.class)
 	private LocalDateTime dateCreation;
 
 	private String fournisseur;
 
 	private BigDecimal cout;
-	
-	
-	public Devis() { }
+
+	@JsonDeserialize(using = MyLocalDateTimeDeserializer.class)
+	@JsonSerialize(using = MyLocalDateTimeSerializer.class)
+	private LocalDateTime dateValidation;
+
+	public Devis() {
+	}
 
 	public String getReference() {
 		return reference;
@@ -73,6 +89,20 @@ public class Devis implements Serializable{
 	public Long getId() {
 		return id;
 	}
-	
-	
+
+	/**
+	 * @return the dateValidation
+	 */
+	public LocalDateTime getDateValidation() {
+		return dateValidation;
+	}
+
+	/**
+	 * @param dateValidation
+	 *            the dateValidation to set
+	 */
+	public void setDateValidation(LocalDateTime dateValidation) {
+		this.dateValidation = dateValidation;
+	}
+
 }
