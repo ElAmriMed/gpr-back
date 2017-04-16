@@ -1,8 +1,5 @@
 package tn.msis.gpr.converter;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.dozer.DozerConverter;
 
 import tn.msis.gpr.domain.Facture;
@@ -38,15 +35,6 @@ public class PanneConverter extends DozerConverter<Panne, tn.msis.gpr.entities.P
 			new Facture(source.getFacture().getReferenceFacture(), source.getFacture().getDateCreationFacture(),
 					source.getFacture().getCout());
 		}
-		if (source.getReferencesDevis() != null) {
-
-			List<String> refDevisList = new ArrayList<>();
-			for (String refDevis : source.getReferencesDevis()) {
-
-				refDevisList.add(refDevis);
-			}
-			panne.setReferencesDevis(refDevisList);
-		}
 		return panne;
 
 	}
@@ -72,16 +60,6 @@ public class PanneConverter extends DozerConverter<Panne, tn.msis.gpr.entities.P
 		if (source.getFacture() != null) {
 			new tn.msis.gpr.entities.Facture(source.getFacture().getReferenceFacture(),
 					source.getFacture().getDateCreationFacture(), source.getFacture().getCout());
-		}
-
-		if (source.getReferencesDevis() != null) {
-
-			List<String> refDevisList = new ArrayList<>();
-			for (String refDevis : source.getReferencesDevis()) {
-
-				refDevisList.add(refDevis);
-			}
-			panne.setReferencesDevis(refDevisList);
 		}
 		return panne;
 	}

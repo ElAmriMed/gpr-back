@@ -2,7 +2,6 @@ package tn.msis.gpr.domain;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Embedded;
@@ -12,7 +11,6 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Transient;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -47,26 +45,8 @@ public class Panne implements Serializable {
 	@Embedded
 	private Facture facture;
 
-	@Transient
-	private List<String> referencesDevis = null;
-
 	@Enumerated(EnumType.STRING)
 	private EtatPanne etat = EtatPanne.ATTENTE_DEVIS;
-
-	/**
-	 * @return the referencesDevis
-	 */
-	public List<String> getReferencesDevis() {
-		return referencesDevis;
-	}
-
-	/**
-	 * @param referencesDevis
-	 *            the referencesDevis to set
-	 */
-	public void setReferencesDevis(List<String> referencesDevis) {
-		this.referencesDevis = referencesDevis;
-	}
 
 	public Panne() {
 	}

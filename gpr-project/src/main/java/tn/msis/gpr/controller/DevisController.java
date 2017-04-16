@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -53,6 +54,12 @@ public class DevisController {
 	// .body(file);
 	// }
 
+	@PostMapping("/create")
+	public void create(@RequestBody Devis devis) {
+
+		devisRepository.save(devis);
+	}
+
 	@PostMapping("/upload")
 	public String handleFileUpload(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
 
@@ -69,36 +76,22 @@ public class DevisController {
 		return "redirect:/";
 	}
 
-	@PostMapping("/uploads")
-	public String handleFilesUpload(@RequestParam("files") List<MultipartFile> files,
-			RedirectAttributes redirectAttributes) {
-
-		if (files.isEmpty()) {
-			redirectAttributes.addFlashAttribute("message", "Please select at least one file to upload");
-			return "redirect:/";
-		}
-
-		for (MultipartFile file : files) {
-
-			devisService.upload(file);
-			redirectAttributes.addFlashAttribute("message",
-					"You successfully uploaded " + file.getOriginalFilename() + "!");
-		}
-		return "redirect:/";
-	}
-
 	// @ExceptionHandler(StorageFileNotFoundException.class)
 	// public ResponseEntity handleStorageFileNotFound(StorageFileNotFoundException exc) {
 	// return ResponseEntity.notFound().build();
 	// }
 
-	@GetMapping("/devis/find/panne/{matricule}")
+	@GetMapping("/devis/find/panne/{refPanne}")
 	@ResponseBody
-	public List<Devis> findByMatriculeInPanne(@PathVariable("matricule") String matricule) {
+	public List<Devis> findByMatriculeInPanne(@PathVariable("refPanne") String refPanne) {
 
-		List<Devis> result = devisRepository.findByMatriculeInPanne(matricule);
+		return devisRepository.findByPanne(refPanne);
+	}
 
-		return result;
+	@PostMapping("/devis/{ref}/validate")
+	public void update(@PathVariable("ref") String reference) {
+
+		devisService.validate(reference);
 	}
 
 }

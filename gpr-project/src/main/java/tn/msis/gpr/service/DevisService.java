@@ -4,6 +4,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 public interface DevisService {
 
-	void upload(MultipartFile file);
+	public void upload(MultipartFile file);
+
+	public void validate(String reference);
 
 }

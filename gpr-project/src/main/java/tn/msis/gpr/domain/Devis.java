@@ -29,7 +29,11 @@ public class Devis implements Serializable {
 
 	private String reference;
 
-	private String matricule;
+	private String matricule; // TODO elliminate
+
+	private String panne;
+
+	private String fichier;
 
 	@JsonDeserialize(using = MyLocalDateTimeDeserializer.class)
 	@JsonSerialize(using = MyLocalDateTimeSerializer.class)
@@ -60,6 +64,36 @@ public class Devis implements Serializable {
 
 	public void setMatricule(String matricule) {
 		this.matricule = matricule;
+	}
+
+	/**
+	 * @return the panne
+	 */
+	public String getPanne() {
+		return panne;
+	}
+
+	/**
+	 * @param panne
+	 *            the panne to set
+	 */
+	public void setPanne(String panne) {
+		this.panne = panne;
+	}
+
+	/**
+	 * @return the fichier
+	 */
+	public String getFichier() {
+		return fichier;
+	}
+
+	/**
+	 * @param fichier
+	 *            the fichier to set
+	 */
+	public void setFichier(String fichier) {
+		this.fichier = fichier;
 	}
 
 	public LocalDateTime getDateCreation() {
