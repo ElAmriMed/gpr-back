@@ -23,6 +23,8 @@ public class Maintenance implements Serializable{
 	private LocalDateTime dateDebut;
 
 	private LocalDateTime dateFin;
+	
+	private String description; 
 
 	@Embedded
 	private Facture facture;
@@ -60,6 +62,14 @@ public class Maintenance implements Serializable{
 
 	public void setDateFin(LocalDateTime dateFin) {
 		this.dateFin = dateFin;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public Facture getFacture() {

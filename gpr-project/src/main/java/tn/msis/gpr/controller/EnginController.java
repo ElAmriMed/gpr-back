@@ -21,6 +21,7 @@ import tn.msis.gpr.domain.Engin;
 import tn.msis.gpr.enums.EtatEngin;
 import tn.msis.gpr.enums.TypeEngin;
 import tn.msis.gpr.repository.EnginRepository;
+import tn.msis.gpr.service.HistorizeEnginService;
 
 @CrossOrigin(origins = "http://192.168.1.8:4200")
 @RequestMapping(value = "/engin")
@@ -32,6 +33,9 @@ public class EnginController {
 
 	@Autowired
 	private DozerBeanMapper dozerBeanMapper;
+	
+	@Autowired
+	private HistorizeEnginService historizeEnginService;
 
 	@RequestMapping(value = "/findAll", method = GET)
 	public List<Engin> findAll() {
@@ -67,13 +71,20 @@ public class EnginController {
 	public Engin add(@RequestBody tn.msis.gpr.entities.Engin engin) {
 
 		Engin domain = dozerBeanMapper.map(engin, Engin.class);
-
-		return enginRepository.save(domain);
+		domain = enginRepository.save(domain);
+		historizeEnginService.perform(domain);
+		
+		return domain;
 	}
 
 	@RequestMapping(value = "/update", method = PUT)
 	public Engin update(@RequestBody Engin engin) {
-		return enginRepository.save(engin);
+		
+		Engin domain = dozerBeanMapper.map(engin, Engin.class);
+		domain = enginRepository.save(domain);
+		historizeEnginService.perform(domain);
+		
+		return domain;
 	}
 
 	@RequestMapping(value = "/delete/id/{id}", method = DELETE)

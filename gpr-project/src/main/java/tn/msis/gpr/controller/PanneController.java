@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import tn.msis.gpr.entities.Panne;
 import tn.msis.gpr.enums.EtatPanne;
 import tn.msis.gpr.repository.PanneRepository;
+import tn.msis.gpr.service.HistorizeEnginService;
 
 @CrossOrigin(origins = "http://192.168.1.8:4200")
 @RestController
@@ -28,6 +29,9 @@ public class PanneController {
 
 	@Autowired
 	private DozerBeanMapper dozerBeanMapper;
+	
+	@Autowired
+	private HistorizeEnginService historizeEnginService;
 
 	@GetMapping("/findAll")
 	public List<Panne> findAll() {
@@ -47,6 +51,7 @@ public class PanneController {
 		tn.msis.gpr.domain.Panne domain = dozerBeanMapper.map(panne, tn.msis.gpr.domain.Panne.class);
 
 		panneRepository.save(domain);
+		historizeEnginService.perform(domain);
 	}
 
 	@GetMapping("/findByMatricule/{matricule}")
@@ -68,6 +73,7 @@ public class PanneController {
 		tn.msis.gpr.domain.Panne domain = dozerBeanMapper.map(panne, tn.msis.gpr.domain.Panne.class);
 
 		panneRepository.save(domain);
+		historizeEnginService.perform(domain);
 	}
 
 	@GetMapping("/find/etat/{etat}")

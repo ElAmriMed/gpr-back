@@ -36,6 +36,8 @@ public class Engin implements Serializable {
 	private EtatEngin etat;
 
 	private String carburant;
+	
+	private Integer km;
 
 	private String projet;
 
@@ -137,5 +139,28 @@ public class Engin implements Serializable {
 	public void setEtat(EtatEngin etat) {
 		this.etat = etat;
 	}
+	
+	public String getCarburant() {
+		return carburant;
+	}
 
+	public void setCarburant(String carburant) {
+		this.carburant = carburant;
+	}
+
+	public Integer getKm() {
+		return km;
+	}
+
+	public void setKm(Integer km) {
+		this.km = km;
+	}
+
+	public String getProjet() {
+		return projet;
+	}
+
+	public void setProjet(String projet) {
+		this.projet = projet;
+	}
 }

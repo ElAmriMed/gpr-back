@@ -22,6 +22,8 @@ import tn.msis.gpr.enums.EtatPanne;
 @Entity
 public class Panne implements Serializable {
 
+	private static final long serialVersionUID = -7465534786187633339L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
